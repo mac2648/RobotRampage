@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Demo : MonoBehaviour
@@ -15,14 +12,12 @@ public class Demo : MonoBehaviour
         cityPopulation.Add("sao paulo", 21100000);
         cityPopulation.Add("mexico city", 21000000);
 
-        Console.WriteLine("city population");
+        Debug.Log("city population ");
 
         foreach(KeyValuePair<string, int> city in cityPopulation)
         {
-            Console.WriteLine("City: " + city.Key + "Population" + city.Value);
-
+            Debug.Log("City: " + city.Key + " Population " + city.Value);
         }
-
-        Console.WriteLine("Total amount of cities" + cityPopulation.Count);
+        Debug.Log("Total amount of cities " + cityPopulation.Count);
     }
 }
