@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class PickupSpawn : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    private GameObject[] pickups;
+
+    // 1
+    void spawnPickup()
+    {
+        // Instantiate a random pickup
+        GameObject pickup = Instantiate(pickups[Random.Range(0,
+       pickups.Length)]);
+        pickup.transform.position = transform.position;
+        pickup.transform.parent = transform;
+    }
+    // 2
+    IEnumerator respawnPickup()
+    {
+        yield return new WaitForSeconds(20);
+        spawnPickup();
+    }
+    // 3
     void Start()
     {
-        
+        spawnPickup();
     }
-
-    // Update is called once per frame
-    void Update()
+    // 4
+    public void PickupWasPickedUp()
     {
-        
+        StartCoroutine("respawnPickup");
     }
 }
