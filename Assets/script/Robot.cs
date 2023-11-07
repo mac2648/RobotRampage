@@ -17,6 +17,8 @@ public class Robot : MonoBehaviour
 
     public Animator robot;
 
+    [SerializeField]
+    GameObject missileprefab;
     void Start()
     {
         // 1
@@ -45,9 +47,35 @@ public class Robot : MonoBehaviour
             fire();
         }
     }
+
     private void fire()
     {
+        GameObject missile = Instantiate(missileprefab);
+        missile.transform.position = missileFireSpot.transform.position;
+        missile.transform.rotation = missileFireSpot.transform.rotation;
         robot.Play("Fire");
+    }
+
+    // 1
+    public void TakeDamage(int amount)
+    {
+        if (isDead)
+        {
+            return;
+        }
+        health -= amount;
+        if (health <= 0)
+        {
+            isDead = true;
+            robot.Play("Die");
+            StartCoroutine("DestroyRobot");
+        }
+    }
+    // 2
+    IEnumerator DestroyRobot()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Destroy(gameObject);
     }
 
 }
