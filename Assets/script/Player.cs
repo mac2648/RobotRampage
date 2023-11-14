@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     {
         if (this.transform.position.y != 2.68f)
         {
-            this.transform.position.Set(this.transform.position.x, 2.68f, this.transform.position.z);
+            Vector3 NewPos = new Vector3(this.transform.position.x, 2.68f, this.transform.position.z);
+            this.transform.position = NewPos;
         }
     }
 
