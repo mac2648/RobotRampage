@@ -20,7 +20,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (this.transform.position.y != 2.68f)
+        {
+            this.transform.position.Set(this.transform.position.x, 2.68f, this.transform.position.z);
+        }
     }
 
     public void TakeDamage(int amount)
