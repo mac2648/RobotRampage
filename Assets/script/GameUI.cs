@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.LowLevel;
 using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
@@ -11,6 +12,8 @@ public class GameUI : MonoBehaviour
     Sprite yellowReticle;
     [SerializeField]
     Sprite blueReticle;
+    [SerializeField]
+    Sprite greenReticle;
     [SerializeField]
     Image reticle;
 
@@ -46,7 +49,11 @@ public class GameUI : MonoBehaviour
                 reticle.sprite = yellowReticle;
                 break;
             case Constants.AssaultRifle:
-                reticle.sprite = blueReticle; break;
+                reticle.sprite = blueReticle; 
+                break;
+            case Constants.Lazer:
+                reticle.sprite = greenReticle; 
+                break;
             default:
                 return;
         }
